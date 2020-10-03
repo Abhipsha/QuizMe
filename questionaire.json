@@ -1,0 +1,94 @@
+{
+  "questions": [
+    {
+      "number": 1,
+      "question": "What is the name for the Jewish New Year?",
+      "answers": ["Hanukkah", "Yom Kippur", "Kwanza", "Rosh Hashanah"],
+      "correct_answer": "Rosh Hashanah"
+    },
+    {
+      "number": 2,
+      "question": "How many blue stripes are there on the U.S. flag?",
+      "answers": ["6", "7", "13", "0"],
+      "correct_answer": 0
+    },
+    {
+      "number": 3,
+      "question": " Which one of these characters is not friends with Harry Potter?",
+      "answers": ["Ron Weasley", "Neville Longbottom", "Draco Malfoy", "Hermione Granger"],
+      "correct_answer": "Draco Malfoy"
+    },
+    {
+      "number": 4,
+      "question": "What is the color of Donald Duck’s bowtie?",
+      "answers": ["Red", "Yellow", "Blue", "White"],
+      "correct_answer": "Red"
+    },
+    {
+      "number": 5,
+      "question": "What was the name of the band Lionel Richie was a part of?",
+      "answers": ["King Harvest", "Spectrums", "Commodores", "The Marshall Tucker Band"],
+      "correct_answer": "Commodores"
+    },
+    {
+      "number": 6,
+      "question": "Which animal does not appear in the Chinese zodiac?",
+      "answers": ["Dragon", "Rabbit", "Dog", "Hummingbird"],
+      "correct_answer": "Hummingbird"
+    },
+    {
+      "number": 7,
+      "question": "Which country held the 2016 Summer Olympics?",
+      "answers": ["China", "Ireland", "Brazil", "Italy"],
+      "correct_answer": "Brazil"
+    },
+    {
+      "number": 8,
+      "question": "Which planet is the hottest?",
+      "answers": ["Venus", "Saturn", "Mercury", "Mars"],
+      "correct_answer": "Venus"
+    },
+    {
+      "number": 9,
+      "question": "Who was the only U.S. President to resign?",
+      "answers": [" Herbert Hoover", "Richard Nixon", "George W. Bush", "Barack Obama"],
+      "correct_answer": "Nixon"
+    },
+    {
+      "number": 10,
+      "question": "What does the “D” in “D-Day” stand for?",
+      "answers": ["Dooms", "Dark", "Denmark", "Dunkirk"],
+      "correct_answer": "Dunkirk"
+    },
+    {
+      "number": 11,
+      "question": " In which city can you find the Liberty Bell?",
+      "answers": ["Washington, D.C.", "Boston", "Philadelphia", "Manhattan"],
+      "correct_answer": "Philadelphia"
+    },
+    {
+      "number": 12,
+      "question": "In Pirates of the Caribbean, what was the name of Captain Jack Sparrow’s ship?",
+      "answers": ["The Marauder", "The Black Pearl", "The Black Python", "The Slytherin"],
+      "correct_answer": "The Black Pearl"
+    },
+    {
+      "number": 13,
+      "question": " According to Forrest Gump, “life was like…”",
+      "answers": ["A bag of lemons", "A handful of roses", "A lollipop", "A box of chocolates"],
+      "correct_answer": "A box of chocolates"
+    },
+    {
+      "number": 14,
+      "question": "Linda and Bob from Bob’s Burgers have 3 kids. Which one of these characters is not one of them?",
+      "answers": ["Louise", "Gene", "Jimmy", "Tina"],
+      "correct_answer": "Jimmy"
+    },
+    {
+      "number": 15,
+      "question": "The British band One Direction (rip) was made up of Harry, Louis, Niall, Zayn, and…",
+      "answers": ["Paul", "Callum", "Kevin", "Liam"],
+      "correct_answer": "Liam"
+    }
+  ]
+}
