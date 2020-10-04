@@ -1,15 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-  Dimensions,
-  StyleSheet,
-  ScrollView,
-  Image,
-} from "react-native";
+import { View, Text, TouchableOpacity, Dimensions, StyleSheet, ScrollView, Image } from "react-native";
 import { questions } from "../../questionaire.json";
 import { find, findIndex, map } from "lodash";
 import Confirm from "../../assets/confirm.png";
@@ -49,8 +39,12 @@ export const QuizScreen = () => {
 
   useEffect(() => {
     if (secondCounter === 0) {
-      setQuestionCount(questionCount + 1);
-      setSecondCounter(60);
+      if (questionCount !== 15) {
+        setQuestionCount(questionCount + 1);
+        setSecondCounter(60);
+      } else {
+        setShowReult(true);
+      }
     }
     if (!secondCounter) return;
     const intervalId = setInterval(() => {
@@ -64,7 +58,7 @@ export const QuizScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF", marginHorizontal: 11 }}>
+    <View style={{ flex: 1, backgroundColor: "#FFFFFF", marginTop: 21 }}>
       {!showResult ? (
         <ScrollView>
           <Text style={{ fontSize: 36, textAlign: "center", fontWeight: "600" }}>QUIZ ME</Text>
@@ -92,7 +86,7 @@ export const QuizScreen = () => {
                           return (
                             <View key={index} style={{ marginVertical: 11, marginTop: 30 }}>
                               <TouchableOpacity
-                                disabled={selectedAns.length > 1}
+                                disabled={selectedAns.length > 0}
                                 style={
                                   checked
                                     ? correctAns
@@ -123,7 +117,7 @@ export const QuizScreen = () => {
               onPress={() => {
                 setShowReult(true);
               }}
-              style={{ backgroundColor: "#4169E1", alignSelf: "center", borderRadius: 9, width: WIDTH * 0.4 }}
+              style={Styles.submitBtnStyle}
             >
               <Text style={{ padding: 11, textAlign: "center", color: "#FFFFFF", fontSize: 21 }}>SUBMIT</Text>
             </TouchableOpacity>
@@ -142,7 +136,7 @@ export const QuizScreen = () => {
           <Text style={{ fontSize: 21 }}> {`Your have scored ${correctAnsCount} out of 15`}</Text>
         </View>
       )}
-    </SafeAreaView>
+    </View>
   );
 };
 const Styles = StyleSheet.create({
@@ -185,5 +179,11 @@ const Styles = StyleSheet.create({
       height: 2,
     },
     elevation: 2,
+  },
+  submitBtnStyle: {
+    backgroundColor: "#4169E1",
+    alignSelf: "center",
+    borderRadius: 9,
+    width: WIDTH * 0.4,
   },
 });

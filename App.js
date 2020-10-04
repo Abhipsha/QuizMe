@@ -1,9 +1,15 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { QuizScreen } from "./container/QuizScreen/index";
 export default function App() {
-  return <QuizScreen />;
+  return (
+    <SafeAreaView
+      style={{ flex: 1, flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#ffffff" }}
+    >
+      <QuizScreen />
+    </SafeAreaView>
+  );
 }
 
 const styles = StyleSheet.create({
