@@ -18,20 +18,51 @@ export const QuizScreen = () => {
   const [questionCount, setQuestionCount] = useState(1);
   const [correctAnsCount, setCorrectAnsCount] = useState(0);
   const [selectedAns, setSelectedAns] = useState([]);
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(null);
+  const [secondCounter, setSecondCounter] = useState(null);
   const [showResult, setShowReult] = useState(false);
-  const savedCallback = useRef();
-
   const validateAnswer = (selectedAnswer, correctAnswer) => {
-    setCount(5);
+    if (questionCount !== 15) {
+      setCount(5);
+      setSecondCounter(null);
+    }
     setSelectedAns([selectedAnswer]);
     if (selectedAnswer === correctAnswer) {
       setCorrectAnsCount(correctAnsCount + 1);
     }
-    if (questionCount !== 15) {
-      setQuestionCount(questionCount + 1);
-    }
   };
+
+  useEffect(() => {
+    if (count === 0) {
+      if (questionCount !== 15) {
+        setQuestionCount(questionCount + 1);
+      }
+      setCount(null);
+      setSecondCounter(60);
+    }
+    if (!count) return;
+    const intervalId = setInterval(() => {
+      setCount(count - 1);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [count]);
+
+  useEffect(() => {
+    if (secondCounter === 0) {
+      setQuestionCount(questionCount + 1);
+      setSecondCounter(60);
+    }
+    if (!secondCounter) return;
+    const intervalId = setInterval(() => {
+      setSecondCounter(secondCounter - 1);
+    }, 1000);
+    return () => clearInterval(intervalId);
+  }, [secondCounter]);
+
+  useEffect(() => {
+    setSecondCounter(60);
+  }, []);
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#FFFFFF", marginHorizontal: 11 }}>
       {!showResult ? (
@@ -47,6 +78,13 @@ export const QuizScreen = () => {
                         <Text style={{ fontSize: 17 }}>{item.number}. </Text>
                         <Text style={{ fontSize: 17, fontWeight: "400" }}>{item.question} </Text>
                       </View>
+                      {secondCounter > 0 && (
+                        <View style={{ marginTop: 21 }}>
+                          <Text style={{ textAlign: "center" }}>
+                            {secondCounter < 10 ? "0" + secondCounter : secondCounter}:00
+                          </Text>
+                        </View>
+                      )}
                       <View style={{ marginTop: 55 }}>
                         {map(item.answers, (ans, index) => {
                           const checked = findIndex(selectedAns, (ag) => ag === ans) !== -1;
@@ -90,13 +128,17 @@ export const QuizScreen = () => {
               <Text style={{ padding: 11, textAlign: "center", color: "#FFFFFF", fontSize: 21 }}>SUBMIT</Text>
             </TouchableOpacity>
           ) : (
-            <View style={{}}>{selectedAns.length > 0 && <Text style={{ textAlign: "center" }}>{count}</Text>}</View>
+            <View>{count > 0 && <Text style={{ textAlign: "center" }}> 00:0{count} </Text>}</View>
           )}
         </ScrollView>
       ) : (
         <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
           <Text style={{ fontSize: 32, fontWeight: "600", color: "#0ca86c" }}>Congratulations !!</Text>
-          <Image source={Confirm} style={{ width: 80, height: 80, alignSelf: "center", marginVertical: 20 }} />
+          <Image
+            source={Confirm}
+            resizeMode={"contain"}
+            style={{ width: 80, height: 80, alignSelf: "center", marginVertical: 20 }}
+          />
           <Text style={{ fontSize: 21 }}> {`Your have scored ${correctAnsCount} out of 15`}</Text>
         </View>
       )}
