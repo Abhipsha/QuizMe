@@ -143,7 +143,7 @@ export const QuizScreen = () => {
               );
             })}
           </View>
-          {questionCount === 15 && selectedAns.length > 0 ? (
+          {questionCount === 15 && selectedAns ? (
             <TouchableOpacity
               onPress={() => {
                 setShowReult(true);
